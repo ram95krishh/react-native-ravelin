@@ -1,24 +1,7 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules } from 'react-native';
+const { RavelinCore: Ravelin } = NativeModules;
 
-const LINKING_ERROR =
-  `The package 'react-native-ravelin' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const Ravelin =
-  NativeModules.RavelinCore ??
-  new Proxy(
-    {},
-    {
-      get() {
-        throw new Error(LINKING_ERROR);
-      },
-    }
-  );
-
-interface RavelinModuleInterface {
+interface RavelinInterface {
   setUp: (apiKey: string) => Promise<boolean>;
   getDeviceId: () => Promise<string>;
   setCustomerId: (customerId: string) => void;
@@ -77,4 +60,4 @@ interface RavelinModuleInterface {
   ) => Promise<boolean>;
 }
 
-export default Ravelin as RavelinModuleInterface;
+export default Ravelin as RavelinInterface;

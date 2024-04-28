@@ -82,6 +82,15 @@ repositories {
   google()
 }
 
+allprojects {
+    repositories {
+        /* other repositories */
+        maven {
+            setUrl("https://maven.ravelin.com/public/repositories/core-android/")
+        }
+    }
+}
+
 def kotlin_version = getExtOrDefault("kotlinVersion")
 
 dependencies {
@@ -90,5 +99,6 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation 'com.ravelin.sdk:ravelin-core:3.1.0'
 }
 

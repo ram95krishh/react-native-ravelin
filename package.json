@@ -5,6 +5,7 @@
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
+  "author": "niek.albers@startselect.com",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -39,19 +40,6 @@
     "ios",
     "android"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ram95krishh/react-native-ravelin.git"
-  },
-  "author": "Rama <ramakrishnan.cs@recharge.com> (https://github.com/ram95krishh)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ram95krishh/react-native-ravelin/issues"
-  },
-  "homepage": "https://github.com/ram95krishh/react-native-ravelin#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.5.0",

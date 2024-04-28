@@ -1,18 +1,26 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-ravelin';
+
+import Ravelin from './RavelinModule';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | undefined>();
+
+  const getData = React.useCallback(async () => {
+    const res = await Ravelin.setUp('YOUR_API_KEY_HERE');
+    console.log('Success?', res);
+    Ravelin.setCustomerId('Test123');
+    const deviceId = await Ravelin.getDeviceId();
+    setResult(deviceId);
+  }, []);
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+    getData();
+  }, [getData]);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Device ID from Ravelin: {result}</Text>
     </View>
   );
 }
